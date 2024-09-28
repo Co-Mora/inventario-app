@@ -12,6 +12,7 @@ export class CreateProductComponent {
   product: Product = {
     id: '',
     name: '',
+    description: '',
     quantity: 0,
     price: 0,
   };
@@ -22,7 +23,7 @@ export class CreateProductComponent {
     this.productService.createProduct(this.product).subscribe({
       next: () => {
         alert('Product created successfully!');
-        this.router.navigate(['/products']); // Navigate back to the product list after creation
+        this.router.navigate(['/products']);
       },
       error: (err) => {
         console.error('Error creating product:', err);

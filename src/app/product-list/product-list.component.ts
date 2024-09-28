@@ -24,11 +24,12 @@ export class ProductListComponent implements OnInit {
   }
 
   createProduct(): void {
-    this.router.navigate(['/create-product']); // Adjust the route according to your routing setup
+    this.router.navigate(['/create-product']);
   }
 
   editProduct(id: string): void {
-    this.router.navigate(['/edit-product', id]); // Adjust the route according to your routing setup
+    //TODO: Crear este route
+    this.router.navigate(['/edit-product', id]);
   }
 
   deleteProduct(id: string): void {

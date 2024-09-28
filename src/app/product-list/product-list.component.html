@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
+        <th>Quantity</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
+        <td>{{ product.quantity }}</td>
         <td>{{ product.price }}</td>
         <td>
           <button class="btn btn-primary" (click)="editProduct(product.id)">
