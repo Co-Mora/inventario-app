@@ -1,1 +1,35 @@
-<p>product-list works!</p>
+<div class="container mt-4">
+  <h2>Product List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editProduct(product.id)">
+            Edit
+          </button>
+          <button class="btn btn-danger" (click)="deleteProduct(product.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" (click)="createProduct()">
+    Create New Product
+  </button>
+</div>

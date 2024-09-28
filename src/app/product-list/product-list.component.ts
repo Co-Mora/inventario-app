@@ -1,42 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  standalone: true,
-  imports: [],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadProducts();
   }
 
-  loadProducts() {
-    this.productService.getProducts().subscribe(
-      (products) => (this.products = products),
-      (error) => console.error('Error loading products', error)
-    );
+  loadProducts(): void {
+    this.productService.getProducts().subscribe((data: Product[]) => {
+      this.products = data;
+    });
   }
 
-  addProduct() {
-    // Implement add product logic
+  createProduct(): void {
+    this.router.navigate(['/create-product']); // Adjust the route according to your routing setup
   }
 
-  editProduct(product: Product) {
-    // Implement edit product logic
+  editProduct(id: string): void {
+    this.router.navigate(['/edit-product', id]); // Adjust the route according to your routing setup
   }
 
-  deleteProduct(id: string) {
-    this.productService.deleteProduct(id).subscribe(
-      () => this.loadProducts(),
-      (error) => console.error('Error deleting product', error)
-    );
+  deleteProduct(id: string): void {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.deleteProduct(id).subscribe(() => {
+        this.loadProducts();
+      });
+    }
   }
 }

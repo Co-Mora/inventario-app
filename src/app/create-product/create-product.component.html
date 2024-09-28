@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2>Create New Product</h2>
+
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        required
+        [(ngModel)]="product.name"
+        name="name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">quantity</label>
+      <input
+        id="quantity"
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="product.quantity"
+        name="quantity"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        class="form-control"
+        required
+        [(ngModel)]="product.price"
+        name="price"
+        min="0"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Product</button>
+    <a routerLink="/products" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
